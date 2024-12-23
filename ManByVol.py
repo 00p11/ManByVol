@@ -3,8 +3,6 @@ import sys
 import requests
 import zipfile
 import shutil
-import shlex
-from bs4 import BeautifulSoup
 from natsort import natsorted
 from pathlib import Path
 
@@ -81,11 +79,7 @@ for i, argv in enumerate(sys.argv[1:]):
     if argv == "-id":
         MANGA_ID = nextARGV
     if argv == "-f":
-        try:    
-            FOLDER = shlex.split(nextARGV)[0] if nextARGV else None
-        except ValueError as e:
-            print(f"{Colors.RED}Error parsing folder path: {str(e)}{Colors.END}")
-            sys.exit(1)
+        FOLDER = nextARGV
     if argv == "-l":
         REQUEST_LIMIT = nextARGV
     if argv == "-p":
